@@ -1,4 +1,6 @@
-import React, { useContext, useState } from "react";
+import React from "react";
+
+import { useState } from "react";
 import "./SignupPage.css";
 
 import './nav_style.css';
@@ -6,10 +8,10 @@ import toast, { Toaster } from 'react-hot-toast';
 import Navbar from "./navbar";
 import Footer from "./footer";
 import {Link, useNavigate} from "react-router-dom";
-const [loading, setLoading] = useState(false);
 
-const Login = ({size},props) => {
 
+const Login = (props) => {
+  const [loading, setLoading] = useState(false);
   const [logininfo,setLoginInfo] = useState({
     email:'',
     password:''
