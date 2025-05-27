@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.64d59ce4.css",
+    "main.js": "/static/js/main.11e51de2.js",
+    "static/js/453.8ab44547.chunk.js": "/static/js/453.8ab44547.chunk.js",
+    "static/media/223.jpg": "/static/media/223.62f688d8d20f0ccd7637.jpg",
+    "static/media/464.jpg": "/static/media/464.cae5e8680c8f802b2102.jpg",
+    "static/media/555.jpg": "/static/media/555.e53f9c4a3a8f0cc8f7f1.jpg",
+    "static/media/logo.png": "/static/media/logo.d1259f193c851a93725f.png",
+    "static/media/paymentQR.jpeg": "/static/media/paymentQR.1184cd1abd15586d6e6a.jpeg",
+    "static/media/oops.png": "/static/media/oops.a4c3c8ec9a272e477de7.png",
+    "static/media/user2.png": "/static/media/user2.00d92f05e4fec182b3f6.png",
+    "static/media/mastercard.png": "/static/media/mastercard.68ea4fa49686bef537eb.png",
+    "static/media/res_logo.png": "/static/media/res_logo.7d82e84cf9b65dc51a95.png",
+    "static/media/Visa.png": "/static/media/Visa.12dbf0a959678330d038.png",
+    "static/media/googlepay.jpg": "/static/media/googlepay.d711ce843f0da0f02b2b.jpg",
+    "static/media/phonepay.svg": "/static/media/phonepay.21de27d24b813cdd99b3b1edb084fbae.svg",
+    "index.html": "/index.html",
+    "main.64d59ce4.css.map": "/static/css/main.64d59ce4.css.map",
+    "main.11e51de2.js.map": "/static/js/main.11e51de2.js.map",
+    "453.8ab44547.chunk.js.map": "/static/js/453.8ab44547.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.64d59ce4.css",
+    "static/js/main.11e51de2.js"
+  ]
+}

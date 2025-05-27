@@ -6,6 +6,8 @@ import './FixNavAndFoot.css';
 import Navbar from "./navbar";
 import Footer from "./footer";
 import {Link, useNavigate} from "react-router-dom";
+const [loading, setLoading] = useState(false);
+
 const SignupForm = (props) => {
   const [signupinfo,setSignUpInfo] = useState({
     name:'',
@@ -26,46 +28,50 @@ const SignupForm = (props) => {
 
   }
   const navigate = useNavigate();
-  const HandleSignUp =  async (e)=>{
+  const HandleSignUp = async (e) => {
     e.preventDefault();
-    const {name,email,password}=signupinfo;
-if(!name||!email||!password){
-toast.error("Email and password are required !");
-}
-
-try {
-    const url = "https://here2order-project-backend.onrender.com/auth/signup";
-    const response = await fetch(url,{
-        method:"POST",
-        headers:{
-            'Content-Type':'application/json'
-        },
-        body : JSON.stringify(signupinfo)
-    });
-    const result = await response.json();
-    console.log(result);
-    const{success,error}=result;
-    if(success){
-         toast.success("Successfully Signup");
-         setTimeout(()=>{
-             navigate("/login");
-         },1000);
-   }else if(!success){
-
+    const { name, email, password } = signupinfo;
   
-    toast.error("Already have an account!");
-    setTimeout(()=>{
-      navigate("/login");
-  },1000);
-   }
-
-
-} 
-
-catch (error) {
-    toast.error(error);
-}
-  }
+    if (!name || !email || !password) {
+      toast.error("Email and password are required!");
+      return;
+    }
+  
+    try {
+      setLoading(true); 
+      const url = "https://here2order-project-backend.onrender.com/auth/signup";
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(signupinfo)
+      });
+  
+      const result = await response.json();
+      console.log(result);
+      const { success, error } = result;
+  
+      if (success) {
+        toast.success("Successfully Signed Up");
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
+      } else {
+        toast.error("Already have an account!");
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
+      }
+  
+    } catch (error) {
+      toast.error("Signup failed. Please try again.");
+      console.error(error);
+    } finally {
+      setLoading(false); 
+    }
+  };
+  
 
 
   
@@ -128,10 +134,19 @@ catch (error) {
             
             {/* Buttons */}
             <div className="d-flex flex-column">
-              <button type="submit" className="btn btn-primary mb-2"  style={{padding:'10px 0px'}}>
-                Signup
-              </button>
-             
+            <button
+  type="submit"
+  className="btn btn-primary mb-2"
+  style={{ padding: '10px 0px' }}
+  disabled={loading}
+>
+  {loading ? (
+    <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  ) : (
+    "Signup"
+  )}
+</button>
+
               <button
                 type="button"
                 className="btn btn-secondary mb-3" style={{padding:'10px 0px'}}

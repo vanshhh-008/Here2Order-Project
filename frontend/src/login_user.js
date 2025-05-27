@@ -6,6 +6,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import Navbar from "./navbar";
 import Footer from "./footer";
 import {Link, useNavigate} from "react-router-dom";
+const [loading, setLoading] = useState(false);
 
 const Login = ({size},props) => {
 
@@ -34,6 +35,7 @@ toast.error("Email and password are required !");
 }
 
 try {
+  setLoading(true);
     const url = "https://here2order-project-backend.onrender.com/auth/login";
     const response = await fetch(url,{
         method:"POST",
@@ -58,6 +60,8 @@ try {
    }
 } catch (error) {
     console.log(error);
+}finally{
+  setLoading(false);
 }
   }
 
@@ -111,9 +115,19 @@ try {
             
             {/* Buttons */}
             <div className="d-flex flex-column">
-              <button type="submit" className="btn btn-primary mb-2"  style={{padding:'10px 0px'}}>
-                Login
-              </button>
+            <button
+  type="submit"
+  className="btn btn-primary mb-2"
+  style={{ padding: '10px 0px' }}
+  disabled={loading}
+>
+  {loading ? (
+    <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  ) : (
+    "Login"
+  )}
+</button>
+
              
               <button
                 type="button"
